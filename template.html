@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+	<link rel="stylesheet" href="./jquery-line-selector-picker/jquery-line-selector-picker.css">
+	
+	<script src="./jquery-3.6.0.min.js"></script>
+    <script src="./jquery-line-selector-picker/jquery-line-selector-picker.js"></script>
+	
+</head>
+<body>
+    <h1>Line Selector Picker - Text</h1>
+    <select class="lsp-text">
+        <option value="1">Option1</option>
+        <option value="2" selected>Option2</option>
+        <option value="3">Option3</option>
+        <option value="4">Option4</option>
+        <option value="5">Option5</option>
+        <option value="6">Option6</option>
+    </select>
+    <h1>Line Selector Picker - Icon</h1>
+    <select class="lsp-icon">
+        <option value="1" icon="arrow_circle_right">arrow_circle_right</option>
+        <option value="2" icon="arrow_forward" selected>arrow_forward</option>
+        <option value="3" icon="arrow_forward2">arrow_forward2</option>
+        <option value="4" icon="desktop">desktop</option>
+        <option value="5" icon="icon">icon</option>
+        <option value="6" icon="mobiledesktop">mobiledesktop</option>
+        <option value="7" icon="none">none</option>
+    </select>
+    <h1>Line Selector Picker - Icon + Text</h1>
+	<select class="lsp-icon-text">
+        <option value="1" icon="dots">dots</option>
+        <option value="2" icon="dots-to-number" selected>dots-to-number</option>
+        <option value="3" icon="fill">fill</option>
+        <option value="4" icon="fit">fit</option>
+        <option value="5" icon="good-looking">good-looking</option>
+        <option value="6" icon="line">line</option>
+        <option value="7" icon="nope">nope</option>
+        <option value="8" icon="number">number</option>
+        <option value="9" icon="stories">stories</option>
+    </select>
+
+    <h1>Template</h1>
+    <div>
+        <div class="lsp-container" option-style="text">
+            <div class="lsp-option-wrap" option-value="">
+                <div class="lsp-option-wrap-style-text">
+                    <span class="lsp-option-wrap-style-text__text">Default</span>
+                </div>
+            </div>
+            <div class="lsp-option-wrap active" option-value="">
+                <div class="lsp-option-wrap-style-text">
+                    <span class="lsp-option-wrap-style-text__text">Contain</span>
+                </div>
+            </div>
+            <div class="lsp-option-wrap" option-value="">
+                <div class="lsp-option-wrap-style-text">
+                    <span class="lsp-option-wrap-style-text__text">Contain1</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div>
+        <div class="lsp-container" option-style="icon">
+            <div class="lsp-option-wrap active" option-value="">
+                <div class="lsp-option-wrap-style-icon">
+                    <div class="lsp-option-wrap-style-icon-wrap">
+                        <div class="svg-normal">
+                            <img src="jquery-line-selector-picker/icons/small/arrow_circle_right.svg">
+                        </div>
+                        <div class="svg-hover">
+                            <img src="jquery-line-selector-picker/icons/small/arrow_circle_right_hover.svg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="lsp-option-wrap" option-value="">
+                <div class="lsp-option-wrap-style-icon">
+                    <div class="lsp-option-wrap-style-icon-wrap">
+                        <div class="svg-normal">
+                            <img src="jquery-line-selector-picker/icons/small/arrow_circle_right.svg">
+                        </div>
+                        <div class="svg-hover">
+                            <img src="jquery-line-selector-picker/icons/small/arrow_circle_right_hover.svg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <div class="lsp-container" option-style="icon-text">
+            <div class="lsp-option-wrap active" option-value="">
+                <div class="lsp-option-wrap-style-icon-text">
+                    <div class="lsp-option-wrap-style-icon-text-icon-block">
+                        <div class="svg-normal">
+                            <img src="jquery-line-selector-picker/icons/big/dots.svg">
+                        </div>
+                        <div class="svg-hover">
+                            <img src="jquery-line-selector-picker/icons/big/dots_hover.svg">
+                        </div>             
+                    </div>
+                    <div class="lsp-option-wrap-style-icon-text-text-block">
+                        <span>Fill</span>
+                    </div>
+                </div>
+            </div>
+            <div class="lsp-option-wrap" option-value="">
+                <div class="lsp-option-wrap-style-icon-text">
+                    <div class="lsp-option-wrap-style-icon-text-icon-block">
+                        <div class="svg-normal">
+                            <img src="jquery-line-selector-picker/icons/big/dots.svg">
+                        </div>
+                        <div class="svg-hover">
+                            <img src="jquery-line-selector-picker/icons/big/dots_hover.svg">
+                        </div>  
+                    </div>
+                    <div class="lsp-option-wrap-style-icon-text-text-block">
+                        <span>Fit</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        jQuery('select.lsp-text').lineSelectorPicker({
+            style: 'text',
+            onChange: function(value) {
+                console.log('text---', value);
+            }
+        });
+        jQuery('select.lsp-text').val(6);
+        jQuery('select.lsp-text').change();
+
+        jQuery('select.lsp-icon').lineSelectorPicker({
+            style: 'icon',
+            onChange: function(value) {
+                console.log('icon---', value);
+            }
+        });
+
+        jQuery('select.lsp-icon').val(5);
+        jQuery('select.lsp-icon').change();
+
+        jQuery('select.lsp-icon-text').lineSelectorPicker({
+            style: 'icon-text',
+            onChange: function(value) {
+                console.log('icon-text---', value);
+            }
+        });
+
+        jQuery('select.lsp-icon-text').val(5);
+        jQuery('select.lsp-icon-text').change();
+    </script>
+</body>
+</html>
