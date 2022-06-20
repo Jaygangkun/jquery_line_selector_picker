@@ -15,7 +15,7 @@
     <h1>Line Selector Picker - Text</h1>
     <select class="lsp-text">
         <option value="1">Option1</option>
-        <option value="2" selected>Option2</option>
+        <option value="2">Option2</option>
         <option value="3">Option3</option>
         <option value="4">Option4</option>
         <option value="5">Option5</option>
@@ -23,36 +23,40 @@
     </select>
     <h1>Line Selector Picker - Icon</h1>
     <select class="lsp-icon">
-        <option value="1" icon="arrow_circle_right">arrow_circle_right</option>
-        <option value="2" icon="arrow_forward" selected>arrow_forward</option>
-        <option value="3" icon="arrow_forward2">arrow_forward2</option>
-        <option value="4" icon="desktop">desktop</option>
-        <option value="5" icon="icon">icon</option>
-        <option value="6" icon="mobiledesktop">mobiledesktop</option>
-        <option value="7" icon="none">none</option>
+        <option value="1" icon="jquery-line-selector-picker/icons//small/arrow_circle_right.svg">arrow_circle_right</option>
+        <option value="2" icon="jquery-line-selector-picker/icons//small/arrow_forward.svg" selected>arrow_forward</option>
+        <option value="3" icon="jquery-line-selector-picker/icons//small/arrow_forward2.svg">arrow_forward2</option>
+        <option value="4" icon="jquery-line-selector-picker/icons//small/desktop.svg">desktop</option>
+        <option value="5" icon="jquery-line-selector-picker/icons//small/icon.svg">icon</option>
+        <option value="6" icon="jquery-line-selector-picker/icons//small/mobiledesktop.svg">mobiledesktop</option>
+        <option value="7" icon="jquery-line-selector-picker/icons//small/none.svg">none</option>
+        <option value="8" icon="https://cdn.nomad.systems/static/imgs/plugin/icon.svg">FFF</option>
     </select>
     <h1>Line Selector Picker - Icon + Text</h1>
 	<select class="lsp-icon-text">
-        <option value="1" icon="dots">dots</option>
-        <option value="2" icon="dots-to-number" selected>dots-to-number</option>
-        <option value="3" icon="fill">fill</option>
-        <option value="4" icon="fit">fit</option>
-        <option value="5" icon="good-looking">good-looking</option>
-        <option value="6" icon="line">line</option>
-        <option value="7" icon="nope">nope</option>
-        <option value="8" icon="number">number</option>
-        <option value="9" icon="stories">stories</option>
+        <option value="1" icon="jquery-line-selector-picker/icons//big/dots.svg">dots</option>
+        <option value="2" icon="jquery-line-selector-picker/icons//big/dots-to-number.svg">dots-to-number</option>
+        <option value="3" icon="jquery-line-selector-picker/icons//big/fill.svg">fill</option>
+        <option value="4" icon="jquery-line-selector-picker/icons//big/fit.svg">fit</option>
+        <option value="5" icon="jquery-line-selector-picker/icons//big/good-looking.svg">good-looking</option>
+        <option value="6" icon="jquery-line-selector-picker/icons//big/line.svg">line</option>
+        <option value="7" icon="jquery-line-selector-picker/icons//big/nope.svg">nope</option>
+        <option value="8" icon="jquery-line-selector-picker/icons//big/number.svg">number</option>
+        <option value="9" icon="jquery-line-selector-picker/icons//big/stories.svg">stories</option>
     </select>
 
     <script>
         jQuery('select.lsp-text').lineSelectorPicker({
-            style: 'text',
+            total_width: '314px',
+            btn_height: '46px',
+            columns: 3,
+            style: 'text', // text, icon, icon-text
             onChange: function(value) {
                 console.log('text---', value);
             }
         });
-        jQuery('select.lsp-text').val(6);
-        jQuery('select.lsp-text').change();
+        // jQuery('select.lsp-text').val(6);
+        // jQuery('select.lsp-text').change();
 
         jQuery('select.lsp-icon').lineSelectorPicker({
             style: 'icon',
@@ -61,8 +65,8 @@
             }
         });
 
-        jQuery('select.lsp-icon').val(5);
-        jQuery('select.lsp-icon').change();
+        // jQuery('select.lsp-icon').val(5);
+        // jQuery('select.lsp-icon').change();
 
         jQuery('select.lsp-icon-text').lineSelectorPicker({
             style: 'icon-text',
@@ -71,8 +75,8 @@
             }
         });
 
-        jQuery('select.lsp-icon-text').val(5);
-        jQuery('select.lsp-icon-text').change();
+        // jQuery('select.lsp-icon-text').val(5);
+        // jQuery('select.lsp-icon-text').change();
     </script>
 </body>
 </html>

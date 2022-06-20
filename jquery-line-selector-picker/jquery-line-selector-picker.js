@@ -78,44 +78,41 @@
     }
 
     var fnIconOptionWrap = function(option) {
-        var svg_normal = '';
-        var svg_hover = '';
-
-        if(option.icon != null && lsp_icons.hasOwnProperty(option.icon)) {
-            svg_normal = lsp_icons[option.icon].normal;
-            svg_hover = lsp_icons[option.icon].hover;
-        }
-
         return `<div class="lsp-option-wrap ${option.selected ? 'active' : ''} ${option.column_start ? 'column-start' : ''} ${option.column_end ? 'column-end' : ''}" style="width:${option.btn_width}%" option-value="${option.value}">
                     <div class="lsp-option-wrap-style-icon" style="height:${option.btn_height}">
                         <div class="lsp-option-wrap-style-icon-wrap">
-                            <div class="svg-normal"><img src="jquery-line-selector-picker/icons/${svg_normal}"></div>
-                            <div class="svg-hover"><img src="jquery-line-selector-picker/icons/${svg_hover}"></div>
+                            <img class="svg-img" data-src="${option.icon}">
                         </div>
                     </div>
                 </div>`
     }
 
     var fnIconTextOptionWrap = function(option) {
-        var svg_normal = '';
-        var svg_hover = '';
-
-        if(option.icon != null && lsp_icons.hasOwnProperty(option.icon)) {
-            svg_normal = lsp_icons[option.icon].normal;
-            svg_hover = lsp_icons[option.icon].hover;
-        }
-
         return `<div class="lsp-option-wrap ${option.selected ? 'active' : ''} ${option.column_start ? 'column-start' : ''} ${option.column_end ? 'column-end' : ''}" style="width:${option.btn_width}%" option-value="${option.value}">
                     <div class="lsp-option-wrap-style-icon-text">
                         <div class="lsp-option-wrap-style-icon-text-icon-block"  style="height:${option.btn_height}">
-                            <div class="svg-normal"><img src="jquery-line-selector-picker/icons/${svg_normal}"></div>
-                            <div class="svg-hover"><img src="jquery-line-selector-picker/icons/${svg_hover}"></div>          
+                            <img class="svg-img" data-src="${option.icon}">
                         </div>
                         <div class="lsp-option-wrap-style-icon-text-text-block">
                             <span>${option.text}</span>
                         </div>
                     </div>
                 </div>`
+    }
+
+    async function loadSvgImages(dom_container) {
+        var svg_images = $(dom_container).find('.svg-img');
+        for(var index = 0; index < svg_images.length; index++) {
+            await fetch($(svg_images[index]).attr('data-src')).then(resp => resp.text()).then(resp => {
+                $(svg_images[index]).after(resp);
+            });
+        }
+    }
+
+    function setDefaultSelect(dom_container) {
+        if($(dom_container).find('.active').length == 0) {
+            $(dom_container).find('.lsp-option-wrap').first().addClass('active');
+        }
     }
 
     $.fn.lineSelectorPicker = function(options) {
@@ -177,13 +174,20 @@
             }
         }
 
-        $(this).hide();
+        var select_origin = this;
+        $(select_origin).hide();
         var dom_container_id = Date.now();
-        $(this).after(`<div class="lsp-container" id="lsp_container_${dom_container_id}" style="width:${options_apply.total_width}" option-style="${options_apply.style}">${html_lsp}</div>`)
+        $(select_origin).after(`<div class="lsp-container" id="lsp_container_${dom_container_id}" style="width:${options_apply.total_width}" option-style="${options_apply.style}">${html_lsp}</div>`)
         
         var dom_container = $('#lsp_container_' + dom_container_id);
 
-        $(this).on('change', function() {
+        // loading svg files
+        loadSvgImages(dom_container);
+
+        // set default selected
+        setDefaultSelect(dom_container);
+
+        $(select_origin).on('change', function() {
             // console.log('change...', $(this).val());
             $(dom_container).find('.lsp-option-wrap').removeClass('active');
             $(dom_container).find('.lsp-option-wrap[option-value="' + $(this).val() + '"]').addClass('active');
@@ -192,6 +196,8 @@
         $(dom_container).on('click', '.lsp-option-wrap', function() {
             $(dom_container).find('.lsp-option-wrap').removeClass('active');
             $(this).addClass('active');
+
+            $(select_origin).val($(this).attr('option-value'));
 
             if(options_apply.onChange != 'undefined') {
                 options_apply.onChange($(this).attr('option-value'));
