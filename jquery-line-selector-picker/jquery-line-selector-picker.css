@@ -61,6 +61,7 @@
 .active.lsp-option-wrap.style-text.column-start::before,
 .active.lsp-option-wrap.style-icon.column-start::before {
     left: 50%;
+    width: 50%;
 }
 
 .active.lsp-option-wrap.style-text.column-end::before,
@@ -83,6 +84,7 @@
 .active.lsp-option-wrap.style-text.column-start::after,
 .active.lsp-option-wrap.style-icon.column-start::after {
     left: 50%;
+    width: 50%;
 }
 
 .active.lsp-option-wrap.style-text.column-end::after,
