@@ -38,6 +38,56 @@
     border-color: #1A73E8;
     border-radius: 4px;
     background: #1A73E8;
+    position: relative;
+}
+
+.active.lsp-option-wrap.style-text,
+.active.lsp-option-wrap.style-icon {
+    position: relative;
+}
+
+.active.lsp-option-wrap.style-text::before,
+.active.lsp-option-wrap.style-icon::before {
+    content: '';
+    height: 2px;
+    background: #9E9E9E;
+    width: 100%;
+    top: 0px;
+    position: absolute;
+    z-index: -1;
+    left: 0px;
+}
+
+.active.lsp-option-wrap.style-text.column-start::before,
+.active.lsp-option-wrap.style-icon.column-start::before {
+    left: 50%;
+}
+
+.active.lsp-option-wrap.style-text.column-end::before,
+.active.lsp-option-wrap.style-icon.column-end::before {
+    width: 50%;
+}
+
+.active.lsp-option-wrap.style-text::after,
+.active.lsp-option-wrap.style-icon::after {
+    content: '';
+    height: 2px;
+    background: #9E9E9E;
+    width: 100%;
+    bottom: 0px;
+    position: absolute;
+    z-index: -1;
+    left: 0px;
+}
+
+.active.lsp-option-wrap.style-text.column-start::after,
+.active.lsp-option-wrap.style-icon.column-start::after {
+    left: 50%;
+}
+
+.active.lsp-option-wrap.style-text.column-end::after,
+.active.lsp-option-wrap.style-icon.column-end::after {
+    width: 50%;
 }
 
 .lsp-option-wrap-style-text__text {
@@ -79,6 +129,7 @@
 .active .lsp-option-wrap-style-icon {
     background: #1A73E8;
     border-color: #1A73E8;
+    border-radius: 4px
 }
 
 .active .lsp-option-wrap-style-icon svg path {
@@ -86,7 +137,7 @@
 }
 
 .lsp-option-wrap-style-icon-text-icon-block {
-    border: 2px solid #9E9E9E;
+    border: 1px solid #9E9E9E;
     border-radius: 1px;
     display: flex;
     align-items: center;

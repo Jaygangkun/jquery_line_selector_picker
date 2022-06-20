@@ -70,7 +70,7 @@
     }
 
     var fnTextOptionWrap = function(option) {
-        return `<div class="lsp-option-wrap ${option.selected ? 'active' : ''} ${option.column_start ? 'column-start' : ''} ${option.column_end ? 'column-end' : ''}" style="width:${option.btn_width}%" option-value="${option.value}">
+        return `<div class="lsp-option-wrap style-text ${option.selected ? 'active' : ''} ${option.column_start ? 'column-start' : ''} ${option.column_end ? 'column-end' : ''}" style="width:${option.btn_width}%" option-value="${option.value}">
                     <div class="lsp-option-wrap-style-text" style="height:${option.btn_height}">
                         <span class="lsp-option-wrap-style-text__text">${option.text}</span>
                     </div>
@@ -78,7 +78,7 @@
     }
 
     var fnIconOptionWrap = function(option) {
-        return `<div class="lsp-option-wrap ${option.selected ? 'active' : ''} ${option.column_start ? 'column-start' : ''} ${option.column_end ? 'column-end' : ''}" style="width:${option.btn_width}%" option-value="${option.value}">
+        return `<div class="lsp-option-wrap style-icon ${option.selected ? 'active' : ''} ${option.column_start ? 'column-start' : ''} ${option.column_end ? 'column-end' : ''}" style="width:${option.btn_width}%" option-value="${option.value}">
                     <div class="lsp-option-wrap-style-icon" style="height:${option.btn_height}">
                         <div class="lsp-option-wrap-style-icon-wrap">
                             <img class="svg-img" data-src="${option.icon}">
@@ -88,7 +88,7 @@
     }
 
     var fnIconTextOptionWrap = function(option) {
-        return `<div class="lsp-option-wrap ${option.selected ? 'active' : ''} ${option.column_start ? 'column-start' : ''} ${option.column_end ? 'column-end' : ''}" style="width:${option.btn_width}%" option-value="${option.value}">
+        return `<div class="lsp-option-wrap style-icon-text ${option.selected ? 'active' : ''} ${option.column_start ? 'column-start' : ''} ${option.column_end ? 'column-end' : ''}" style="width:${option.btn_width}%" option-value="${option.value}">
                     <div class="lsp-option-wrap-style-icon-text">
                         <div class="lsp-option-wrap-style-icon-text-icon-block"  style="height:${option.btn_height}">
                             <img class="svg-img" data-src="${option.icon}">
@@ -158,7 +158,7 @@
                 btn_width: 100 / columns,
 
                 column_start: (index % columns == 0),
-                column_end: (index % columns == (columns - 1)),
+                column_end: (index % columns == (columns - 1)) || (index == (options.length - 1)),
             };
 
             if(options_apply.style == 'text') {
