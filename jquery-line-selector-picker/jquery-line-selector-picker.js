@@ -1,74 +1,4 @@
 (function ( $ ) {
-    var lsp_icons = {
-        // small icons
-        'arrow_circle_right' : {
-            normal: '/small/arrow_circle_right.svg',
-            hover: '/small/arrow_circle_right_hover.svg'
-        },
-        'arrow_forward' : {
-            normal: '/small/arrow_forward.svg',
-            hover: '/small/arrow_forward_hover.svg'
-        },
-        'arrow_forward2' : {
-            normal: '/small/arrow_forward2.svg',
-            hover: '/small/arrow_forward2_hover.svg'
-        },
-        'desktop' : {
-            normal: '/small/desktop.svg',
-            hover: '/small/desktop_hover.svg'
-        },
-        'icon' : {
-            normal: '/small/icon.svg',
-            hover: '/small/icon_hover.svg'
-        },
-        'mobiledesktop' : {
-            normal: '/small/mobiledesktop.svg',
-            hover: '/small/mobiledesktop_hover.svg'
-        },
-        'none' : {
-            normal: '/small/none.svg',
-            hover: '/small/none_hover.svg'
-        },
-
-        // big icons
-        'dots' : {
-            normal: '/big/dots.svg',
-            hover: '/big/dots_hover.svg'
-        },
-        'dots-to-number' : {
-            normal: '/big/dots-to-number.svg',
-            hover: '/big/dots-to-number_hover.svg'
-        },
-        'fill' : {
-            normal: '/big/fill.svg',
-            hover: '/big/fill_hover.svg'
-        },
-        'fit' : {
-            normal: '/big/fit.svg',
-            hover: '/big/fit_hover.svg'
-        },
-        'good-looking' : {
-            normal: '/big/good-looking.svg',
-            hover: '/big/good-looking_hover.svg'
-        },
-        'line' : {
-            normal: '/big/line.svg',
-            hover: '/big/line_hover.svg'
-        },
-        'nope' : {
-            normal: '/big/nope.svg',
-            hover: '/big/nope_hover.svg'
-        },
-        'number' : {
-            normal: '/big/number.svg',
-            hover: '/big/number_hover.svg'
-        },
-        'stories' : {
-            normal: '/big/stories.svg',
-            hover: '/big/stories_hover.svg'
-        },
-    }
-
     var fnTextOptionWrap = function(option) {
         return `<div class="lsp-option-wrap style-text ${option.selected ? 'active' : ''} ${option.column_start ? 'column-start' : ''} ${option.column_end ? 'column-end' : ''}" style="width:${option.btn_width}%" option-value="${option.value}">
                     <div class="lsp-option-wrap-style-text" style="height:${option.btn_height}">
@@ -119,7 +49,7 @@
         var options_default = {
             total_width: '314px',
             btn_height: '46px',
-            columns: 3,
+            // columns: 3,
             style: 'text', // text, icon, icon-text
         };
 
@@ -129,6 +59,10 @@
         for(var index = 0; index < options.length; index ++) {
 
             var columns = options.length;
+
+            if(options_apply.hasOwnProperty('columns')) {
+                columns = options_apply['columns'];
+            }
 
             if(options_apply.style == 'text') {
                 if(columns > 3) {
@@ -148,6 +82,7 @@
                 }
             }
 
+            console.log("columns:", columns);
             var option = {
                 value: $(options[index]).attr('value'),
                 text: $(options[index]).text(),

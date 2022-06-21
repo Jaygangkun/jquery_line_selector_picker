@@ -46,6 +46,7 @@
     </select>
 
     <script>
+
         jQuery('select.lsp-text').lineSelectorPicker({
             total_width: '314px',
             btn_height: '46px',
@@ -60,6 +61,7 @@
 
         jQuery('select.lsp-icon').lineSelectorPicker({
             style: 'icon',
+            // columns: 2,
             onChange: function(value) {
                 console.log('icon---', value);
             }
@@ -70,6 +72,8 @@
 
         jQuery('select.lsp-icon-text').lineSelectorPicker({
             style: 'icon-text',
+            // columns: 1,
+            btn_height: '70px',
             onChange: function(value) {
                 console.log('icon-text---', value);
             }

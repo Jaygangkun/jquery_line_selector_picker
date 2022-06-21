@@ -34,20 +34,20 @@
     border-bottom-right-radius: 4px;
 }
 
-.active .lsp-option-wrap-style-text {
+.lsp-container .active .lsp-option-wrap-style-text {
     border-color: #1A73E8;
     border-radius: 4px;
     background: #1A73E8;
     position: relative;
 }
 
-.active.lsp-option-wrap.style-text,
-.active.lsp-option-wrap.style-icon {
+.lsp-container .active.lsp-option-wrap.style-text,
+.lsp-container .active.lsp-option-wrap.style-icon {
     position: relative;
 }
 
-.active.lsp-option-wrap.style-text::before,
-.active.lsp-option-wrap.style-icon::before {
+.lsp-container .active.lsp-option-wrap.style-text::before,
+.lsp-container .active.lsp-option-wrap.style-icon::before {
     content: '';
     height: 2px;
     background: #9E9E9E;
@@ -58,19 +58,19 @@
     left: 0px;
 }
 
-.active.lsp-option-wrap.style-text.column-start::before,
-.active.lsp-option-wrap.style-icon.column-start::before {
+.lsp-container .active.lsp-option-wrap.style-text.column-start::before,
+.lsp-container .active.lsp-option-wrap.style-icon.column-start::before {
     left: 50%;
     width: 50%;
 }
 
-.active.lsp-option-wrap.style-text.column-end::before,
-.active.lsp-option-wrap.style-icon.column-end::before {
+.lsp-container .active.lsp-option-wrap.style-text.column-end::before,
+.lsp-container .active.lsp-option-wrap.style-icon.column-end::before {
     width: 50%;
 }
 
-.active.lsp-option-wrap.style-text::after,
-.active.lsp-option-wrap.style-icon::after {
+.lsp-container .active.lsp-option-wrap.style-text::after,
+.lsp-container .active.lsp-option-wrap.style-icon::after {
     content: '';
     height: 2px;
     background: #9E9E9E;
@@ -81,14 +81,14 @@
     left: 0px;
 }
 
-.active.lsp-option-wrap.style-text.column-start::after,
-.active.lsp-option-wrap.style-icon.column-start::after {
+.lsp-container .active.lsp-option-wrap.style-text.column-start::after,
+.lsp-container .active.lsp-option-wrap.style-icon.column-start::after {
     left: 50%;
     width: 50%;
 }
 
-.active.lsp-option-wrap.style-text.column-end::after,
-.active.lsp-option-wrap.style-icon.column-end::after {
+.lsp-container .active.lsp-option-wrap.style-text.column-end::after,
+.lsp-container .active.lsp-option-wrap.style-icon.column-end::after {
     width: 50%;
 }
 
@@ -99,7 +99,7 @@
     color: #5A5A5A;
 }
 
-.active .lsp-option-wrap-style-text__text {
+.lsp-container .active .lsp-option-wrap-style-text__text {
     color: #ffffff;
 }
 
@@ -112,6 +112,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    box-sizing: border-box;
+}
+
+.lsp-option-wrap-style-icon-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
 }
 
 .lsp-option-wrap:first-of-type .lsp-option-wrap-style-icon,
@@ -128,27 +136,41 @@
     border-bottom-right-radius: 4px;
 }
 
-.active .lsp-option-wrap-style-icon {
+.lsp-container .active .lsp-option-wrap-style-icon {
     background: #1A73E8;
     border-color: #1A73E8;
     border-radius: 4px
 }
 
-.active .lsp-option-wrap-style-icon svg path {
+.lsp-container .active .lsp-option-wrap-style-icon svg path {
     fill: #ffffff;
 }
 
 .lsp-option-wrap-style-icon-text-icon-block {
-    border: 1px solid #9E9E9E;
+    position: relative;
     border-radius: 1px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.active .lsp-option-wrap-style-icon-text-icon-block {
+.lsp-option-wrap-style-icon-text-icon-block::after {
+    content: '';
+    position: absolute;
+    left: 1px;
+    top: 1px;
+    right: 1px;
+    bottom: 1px;
+    border: 1px solid #9E9E9E;
+}
+
+.lsp-container .active .lsp-option-wrap-style-icon-text-icon-block::after {
     border: 2px solid #1A73E8;
     border-radius: 2px;
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
 }
 
 .lsp-option-wrap-style-icon-text-text-block {
@@ -160,7 +182,7 @@
     margin-top: 5px;
 }
 
-.active .lsp-option-wrap-style-icon-text-text-block {
+.lsp-container .active .lsp-option-wrap-style-icon-text-text-block {
     color: #1A73E8;
     font-weight: 500;
 }
@@ -171,7 +193,7 @@
     width: 100%;
 }
 
-.active .lsp-option-wrap-style-icon-text-icon-block svg path {
+.lsp-container .active .lsp-option-wrap-style-icon-text-icon-block svg path {
     fill: #1A73E8;
 }
 
